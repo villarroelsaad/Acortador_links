@@ -3,7 +3,7 @@ import { LogOut } from '../services/logOut'
 import { Link, useNavigate } from 'react-router-dom'
 
 export const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   const navigate = useNavigate()
 

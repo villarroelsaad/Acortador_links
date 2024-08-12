@@ -12,8 +12,8 @@ export const Shortener = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const id = user.authUser.UserID
-      if (id) {
+      if (user) {
+        const id = user.authUser.UserID
         const shortUrl = await ShortenUrl(url, id)
         setShortenedUrl(shortUrl)
       } else {
