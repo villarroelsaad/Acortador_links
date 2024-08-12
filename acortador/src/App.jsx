@@ -6,7 +6,7 @@ function App () {
   return (
     <>
       <main className=''>
-        <header className='flex justify-end w-full bg-zinc-950 items-center'>
+        <header className='flex justify-end w-full bg-zinc-900 items-center'>
           <Nav />
         </header>
         <Outlet />
