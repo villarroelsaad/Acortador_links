@@ -16,12 +16,13 @@ const connection = await mysql.createConnection({
   password: '',
   database: 'Shortener'
 })
-
+// Jkl90*&*(des
 // descargar dependencias para las cookies
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+}))
 
 app.use((req, res, next) => {
   const token = req.cookies.access_token

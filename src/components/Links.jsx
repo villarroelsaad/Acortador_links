@@ -45,9 +45,9 @@ export const Links = () => {
               <p className='text-slate-100 opacity-85 font-semibold'><span className='text-violet-500'>Url Acortada:</span><br /> {url.ShortUrl}</p>
               <button
                 onClick={() => handleDelete(url.id)}
-                className='w-6 self-end rounded-full bg-gray-400'
+                className='w-7 flex justify-center self-end rounded-full bg-gray-400 hover:opacity-70'
               >
-                E
+                <img className='w-5 h-7 t' src='/delete.svg' alt='' />
               </button>
             </div>
           </div>
