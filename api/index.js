@@ -14,7 +14,7 @@ const connection = await mysql.createConnection({
   host: 'betxwuucvkixjqb9vapw-mysql.services.clever-cloud.com',
   user: 'u7rnrdilogdxm8ks',
   password: '5GfGWtuHc3bo34PbSRUK',
-  database: 'Shortener'
+  database: 'betxwuucvkixjqb9vapw'
 })
 // Jkl90*&*(des
 // descargar dependencias para las cookies
@@ -132,4 +132,10 @@ app.get('./logout', (req, res) => {
   res
     .clearCookie('access_token')
     .json({ message: 'logout successful' })
+})
+// Port asignament
+const PORT = process.env.PORT ?? 1234
+
+app.listen(PORT, () => {
+  console.log(`Server listening on Port :${PORT}`)
 })
