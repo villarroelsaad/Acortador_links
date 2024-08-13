@@ -1,6 +1,6 @@
 export const Delete = async (id) => {
   try {
-    const response = await fetch(`http://localhost:1234/delete/${id}`, {
+    const response = await fetch(`https://acortador-links-api.vercel.app/delete/${id}`, {
       method: 'Delete',
       headers: {
         'Content-Type': 'application/json'

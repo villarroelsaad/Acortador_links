@@ -1,6 +1,6 @@
 export const GetLinks = async (id) => {
   try {
-    const response = await fetch(`http://localhost:1234/links/${id}`, {
+    const response = await fetch(`https://acortador-links-api.vercel.app/links/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json' // Opcional

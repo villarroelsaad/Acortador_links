@@ -1,6 +1,6 @@
 export const FRegister = async (username, email, password) => {
   try {
-    const response = await fetch('http://localhost:1234/register', {
+    const response = await fetch('https://acortador-links-api.vercel.app/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

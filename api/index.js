@@ -34,6 +34,10 @@ app.use((req, res, next) => {
   } catch { }
   next()
 })
+app.get('/', (req, res) => {
+  document.write('hola')
+  res.message('hola')
+})
 app.post('/url/create', async (req, res) => {
   // recuperar la url
   const { url, id } = req.body
@@ -128,7 +132,7 @@ app.delete('/delete/:id', async (req, res) => {
   }
 })
 
-app.get('./logout', (req, res) => {
+app.get('/logout', (req, res) => {
   res
     .clearCookie('access_token')
     .json({ message: 'logout successful' })

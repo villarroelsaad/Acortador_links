@@ -1,6 +1,6 @@
 export const LogOut = async () => {
   try {
-    const response = await fetch('http://localhost:1234/logout', {
+    const response = await fetch('https://acortador-links-api.vercel.app/logout', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

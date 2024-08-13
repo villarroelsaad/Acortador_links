@@ -1,6 +1,6 @@
 export const ShortenUrl = async (url, id) => {
   try {
-    const response = await fetch('http://localhost:1234/url/create', {
+    const response = await fetch('https://acortador-links-api.vercel.app/url/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
