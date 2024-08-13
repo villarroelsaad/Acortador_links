@@ -2,7 +2,7 @@ import express from 'express'
 import mysql from 'mysql2/promise'
 import crypto from 'node:crypto'
 import cors from 'cors'
-import jwt from 'jsonwebtoken'
+import jsonwebtoken from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import cookieParser from 'cookie-parser'
 import { Secret } from './config.js'
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   req.session = { user: null }
 
   try {
-    const data = jwt.verify(token, Secret)
+    const data = jsonwebtoken.verify(token, Secret)
     req.session.user = data
   } catch { }
   next()
@@ -81,7 +81,7 @@ app.post('/login', async (req, res) => {
     const { Upassword: _, ...authUser } = user
     if (isValid) {
       // crear token y guardarlo en las cookies
-      const token = jwt.sign({ username: user.Username }, Secret, {
+      const token = jsonwebtoken.sign({ username: user.Username }, Secret, {
         expiresIn: '1h'
       })
       res.cookie('access_token', token, {
