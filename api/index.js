@@ -1,7 +1,7 @@
 import express from 'express'
 import mysql from 'mysql2/promise'
 import crypto from 'node:crypto'
-
+import cors from 'cors'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import cookieParser from 'cookie-parser'
@@ -16,25 +16,17 @@ const connection = await mysql.createConnection({
   password: '5GfGWtuHc3bo34PbSRUK',
   database: 'betxwuucvkixjqb9vapw'
 })
-// Jkl90*&*(des
-// descargar dependencias para las cookies
+
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
-const allowedOrigins = ['https://acortador-links-front.vercel.app']
-
-app.all('*', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://acortador-links-front.vercel.app') // Replace with your frontend origin
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE') // Allowed HTTP methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization') // Allowed headers
-  next()
-})
-// app.use(cors({
-// origin: 'https://acortador-links-front.vercel.app',
-/// / methods: ['GET', 'POST', 'DELETE'],
-// allowedHeaders: ['Content-Type', 'Authorization'],
-// credentials: true
-// }))
+const allowedOrigins = 'https://acortador-links-front.vercel.app'
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}))
 
 app.use((req, res, next) => {
   const token = req.cookies.access_token
