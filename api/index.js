@@ -20,7 +20,7 @@ const connection = await mysql.createConnection({
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
-const allowedOrigins = 'https://acortador-links-front.vercel.app'
+const allowedOrigins = 'https://acortador-links-front.vercel.app/'
 app.use(cors({
   origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -39,8 +39,7 @@ app.use((req, res, next) => {
   next()
 })
 app.get('/', (req, res) => {
-  document.write('hola')
-  res.message('hola')
+  res.json('hola')
 })
 app.post('/url/create', async (req, res) => {
   // recuperar la url
