@@ -23,7 +23,10 @@ app.use(express.json())
 app.use(cookieParser())
 const allowedOrigins = ['https://acortador-links-front.vercel.app']
 app.use(cors({
-  origin: 'https://acortador-links-front.vercel.app'
+  origin: 'https://acortador-links-front.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }))
 // origin: ['https://acortador-links-front.vercel.app'],
 // methods: ['GET', 'POST'],
