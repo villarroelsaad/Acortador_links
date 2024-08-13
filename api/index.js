@@ -21,16 +21,9 @@ const connection = await mysql.createConnection({
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
-const allowedOrigins = ['https://acortador-links-front.vercel.app/']
+const allowedOrigins = ['https://acortador-links-front.vercel.app']
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true)
-    if (allowedOrigins.indexOf(origin) === -1) {
-      return callback(new
-        Error('Origin not allowed by CORS'))
-    }
-    callback(null, true)
-  }
+  origin: 'https://acortador-links-front.vercel.app'
 }))
 // origin: ['https://acortador-links-front.vercel.app'],
 // methods: ['GET', 'POST'],
