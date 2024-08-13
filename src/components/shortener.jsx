@@ -42,7 +42,7 @@ export const Shortener = () => {
           </div>
           <div className='flex justify-center'>
             <div>
-              <p className='bg-zinc-900 text-slate-200 opacity-90 mb-8 text-center p-1 h-10 w-56 rounded-lg font-semibold'>
+              <p className='bg-zinc-900 text-slate-200 opacity-90 mb-8 text-center p-2 h-10 w-96 rounded-lg font-semibold'>
                 {shortenedUrl}
               </p>
               {error && <p className='text-center  font-semibold text-violet-400'>Error: {error}</p>}
