@@ -11,10 +11,10 @@ const app = express()
 
 // Conectar a la base de datos
 const connection = await mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'Shortener'
+  host: 'betxwuucvkixjqb9vapw-mysql.services.clever-cloud.com',
+  user: 'u7rnrdilogdxm8ks',
+  password: '5GfGWtuHc3bo34PbSRUK',
+  database: 'betxwuucvkixjqb9vapw'
 })
 // Jkl90*&*(des
 // descargar dependencias para las cookies
