@@ -16,6 +16,6 @@ export const GetLinks = async (id) => {
     return links
   } catch (err) {
     console.error('Fetch error:', err)
-    throw err // Re-lanza el error original
+    throw err
   }
 }
