@@ -22,7 +22,7 @@ app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: ['https://acortador-links-api.vercel.app'],
+  origin: ['https://acortador-links-front.vercel.app'],
   methods: ['GET', 'POST'],
   credentials: true
 }))
