@@ -54,10 +54,10 @@ export class userModel {
   }
 
   static async register({ input }) {
-    const { username, email, hashedPassword } = input
+    const { username, email, password } = input
 
     // Validar el input para evitar problemas
-    if (!username || !email || !hashedPassword) {
+    if (!username || !email || !password) {
       throw new Error('All fields are required')
     }
 
@@ -69,7 +69,7 @@ export class userModel {
 
     try {
       // Ejecutar la consulta para insertar el nuevo usuario
-      await connection.execute(query, [username, email, hashedPassword])
+      await connection.execute(query, [username, email, password])
     } catch (error) {
       console.error('Error al registrar el usuario:', error)
 
