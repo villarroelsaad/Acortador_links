@@ -74,7 +74,7 @@ export class userModel {
       console.error('Error al registrar el usuario:', error)
 
       // Manejo de errores: lanzar un error más descriptivo
-      throw new Error('Error al registrar el usuario en la base de datos.')
+      throw new Error('Error al registrar')
     }
 
     return true // Retornar un valor indicando éxito
