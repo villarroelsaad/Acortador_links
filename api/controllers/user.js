@@ -5,6 +5,11 @@ import bcrypt from 'bcrypt'
 import { userModel } from '../models/user.js'
 import { validateUser, validateUrl } from '../schemas/user.js'
 export class UserController {
+    static async home(req, res) {
+        // recuperar la url
+        res.json({ message: 'Hola' })
+    }
+
     static async createUrl(req, res) {
         // recuperar la url
         const { url, id } = validateUrl(req.body)
@@ -72,30 +77,30 @@ export class UserController {
     static async links(req, res) {
         const { id } = req.params
 
-        try {
-            const [links] = await userModel.links({ id })
-            if (links.length === '') {
-                return res.status(404).json({ message: 'No posee links activos' })
-            }
-            const formattedLinks = links.map(({ id, OldUrl, ShortUrl }) => ({ id, OldUrl, ShortUrl: `${req.headers.host}/${ShortUrl}` }))
-            res.json(formattedLinks)
-        } catch (error) {
-            console.error(error)
-            res.status(500).json({ message: 'Error al obtener los links' })
-        }
-    }
+      try {
+          const [links] = await userModel.links({ id })
+          if (links.length === '') {
+              return res.status(404).json({ message: 'No posee links activos' })
+          }
+          const formattedLinks = links.map(({ id, OldUrl, ShortUrl }) => ({ id, OldUrl, ShortUrl: `${req.headers.host}/${ShortUrl}` }))
+          res.json(formattedLinks)
+      } catch (error) {
+          console.error(error)
+          res.status(500).json({ message: 'Error al obtener los links' })
+      }
+  }
 
     static async delete(req, res) {
         const { id } = req.params
 
-        try {
-            await userModel.delete(id)
-            res.status(204).json({ message: 'Enlace eliminado correctamente' })
-        } catch (error) {
-            console.error(error)
-            res.status(500).json({ message: 'Error al eliminar el enlace' })
-        }
-    }
+      try {
+          await userModel.delete(id)
+          res.status(204).json({ message: 'Enlace eliminado correctamente' })
+      } catch (error) {
+          console.error(error)
+          res.status(500).json({ message: 'Error al eliminar el enlace' })
+      }
+  }
 
     static async logOut(req, res) {
         res
