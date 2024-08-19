@@ -19,6 +19,6 @@ export const ShortenUrl = async (url, id) => {
     return shorten
   } catch (err) {
     console.error('Fetch error:', err)
-    throw new Error('Failed to shorten URL')
+    throw new Error('Url not valid')
   }
 }

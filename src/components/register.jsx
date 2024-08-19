@@ -5,7 +5,7 @@ export const Register = () => {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-
+  const [error, SetError] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -21,6 +21,7 @@ export const Register = () => {
         return navigate('/login')
       }
     } catch (err) {
+      SetError(err.message)
       setUserName('')
       setPassword('')
       setEmail('')
@@ -45,6 +46,7 @@ export const Register = () => {
           </div>
           <button type='submit' className='bg-violet-500 text-slate-50 w-28 p-2 self-center text-center mt-7 rounded-lg font-semibold active:opacity-85 transition-all'>Iniciar sesion</button>
         </div>
+        {error && <p className='text-center  font-semibold text-violet-400'>Error: {error}</p>}
       </section>
     </form>
   )
