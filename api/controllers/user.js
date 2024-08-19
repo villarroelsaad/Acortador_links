@@ -3,7 +3,7 @@ import crypto from 'node:crypto'
 import jsonwebtoken from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { userModel } from '../models/user.js'
-import { validateUser, validateUrl } from '../schemas/user.js'
+import { validateUser, validateUrl, validateUserLogin } from '../schemas/user.js'
 export class UserController {
   static async home(req, res) {
     // recuperar la url
@@ -57,8 +57,7 @@ export class UserController {
   }
 
   static async login(req, res) {
-    const result = validateUser(req.body)
-
+    const result = validateUserLogin(req.body)
     if (!result) {
       return res.status(400).json({ error: 'Invalid request data' })
     }
@@ -71,10 +70,10 @@ export class UserController {
         return res.status(401).json({ error: 'Username does not exist' })
       }
 
-      const user = userRows[0]
-
+      const user = userRows
+      console.log(userRows)
       // Comparar la contraseña ingresada con la almacenada
-      const isValid = await bcrypt.compare(result.data.password, user.Upassword)
+      const isValid = bcrypt.compare(result.data.password, user.Upassword)
 
       if (isValid) {
         // Crear el token JWT
@@ -87,8 +86,7 @@ export class UserController {
           maxAge: 3600000 // 1 hora en milisegundos
         })
 
-        // Enviar respuesta con el usuario autenticado sin la contraseña
-        const { Upassword, ...authUser } = user
+        const { Upassword: _, ...authUser } = user
         return res.status(200).json({ authUser })
       } else {
         return res.status(401).json({ error: 'Invalid password' })

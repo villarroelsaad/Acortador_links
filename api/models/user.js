@@ -31,26 +31,28 @@ export class userModel {
   }
 
   static async login({ input }) {
-    const { username } = input
-
+    const username = input
     // Validar el input para evitar problemas
     if (!username) {
       throw new Error('Username is required')
     }
 
-    // Ejecutar la consulta para obtener los datos del usuario
-    const [rows] = await connection.execute(
-      'SELECT UserID, Username, Upassword FROM Users WHERE Username = ?',
-      [username]
-    )
+    try {
+      const [rows] = await connection.execute(
+        'SELECT UserID, Username, Upassword FROM Users WHERE Username = ?',
+        [username]
+      )
 
-    // Verificar si se encontró algún usuario
-    if (rows.length === 0) {
-      return null // No se encontró el usuario
+      // Verificar si se encontró algún usuario
+      if (rows.length === 0) {
+        return []
+      }
+
+      return rows
+    } catch (error) {
+      console.error('Database query error:', error)
+      throw new Error('Database query failed')
     }
-
-    // Devolver los resultados directamente
-    return rows
   }
 
   static async register({ input }) {
