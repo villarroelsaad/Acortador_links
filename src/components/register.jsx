@@ -45,8 +45,9 @@ export const Register = () => {
             <Link to='../' className='text-slate-100 opacity-85 text-end text-sm hover:text-violet-400' href='./'>Inicio</Link>
           </div>
           <button type='submit' className='bg-violet-500 text-slate-50 w-28 p-2 self-center text-center mt-7 rounded-lg font-semibold active:opacity-85 transition-all'>Iniciar sesion</button>
+          {error && <p className='text-center mt-6 font-semibold text-violet-400'>Error: {error}</p>}
         </div>
-        {error && <p className='text-center  font-semibold text-violet-400'>Error: {error}</p>}
+
       </section>
     </form>
   )
