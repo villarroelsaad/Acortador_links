@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-// Definir esquemas completos para validación de datos
 const userSchema = z.object({
     username: z.string().min(5, 'Username debe tener minimo 5 caracteres'),
     email: z.string().email('Email invalido'), // Email debe ser válido

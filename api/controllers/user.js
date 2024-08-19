@@ -120,9 +120,10 @@ export class UserController {
 
       res.status(201).json({ message: 'User created successfully' })
     } catch (error) {
-      console.error('Registration error:', error)
-      res.status(500).json({ error: 'Internal server error' })
-    }
+      console.error('Registration error:', error);
+
+      // Enviar una respuesta más detallada sobre el error
+      res.status(500).json({ error: `Internal server error: ${error.message}` })
   }
 
   static async links(req, res) {
