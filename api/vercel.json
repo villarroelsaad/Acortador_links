@@ -3,7 +3,10 @@
     "builds":[
         {"src":"*.js", "use": "@vercel/node"}
     ],
-    "headers": [
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
@@ -16,7 +19,9 @@
           "key": "Access-Control-Allow-Headers",
           "value": "Content-Type, Authorization"
         }
-      ],
+      ]
+    }
+  ],
     
     "routes":[{
         "src":"/(.*)",
