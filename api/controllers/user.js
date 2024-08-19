@@ -83,7 +83,7 @@ export class UserController {
         // Configurar la cookie
         res.cookie('access_token', token, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production', // Asegúrate de usar cookies seguras en producción
+          secure: process.env.NODE_ENV === 'production',
           maxAge: 3600000 // 1 hora en milisegundos
         })
 
@@ -118,10 +118,8 @@ export class UserController {
         input: { ...result.data, password: hashedPassword }
       })
 
-      // Enviar una respuesta exitosa
       res.status(201).json({ message: 'User created successfully' })
     } catch (error) {
-      // Manejar errores y enviar una respuesta adecuada
       console.error('Registration error:', error)
       res.status(500).json({ error: 'Internal server error' })
     }
