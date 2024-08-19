@@ -1,41 +1,22 @@
 
 
 ###recuperar id
-GET  http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+GET   http://localhost:1234/logout
 ###
 
-GET http://localhost:1234/movies?genre=DramA
-###
-POST  http://localhost:1234/movies
-Content-Type: application/json
-
-{
-"title":"para eliminar",
-"year":2000,
-"director":"j",
-"duration":10,
-"poster":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHKHrx5CJU9NrbhkpqV5k9icEW2uJU9EdUy90IJgraYQ&s",
-"genre":[
-    "Action"
-    ],
-"rate":6
-}
-
-###
-PATCH http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
-Content-Type: application/json
-
-{
-  "year": 1992
-}
-###
-DELETE http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
-###
 POST  http://localhost:1234/register
 Content-Type: application/json
 
 {
   "username": "john_doe",
   "email": "john.doe@example.com",
+  "password": "securePassword1"
+}
+####
+POST  http://localhost:1234/login
+Content-Type: application/json
+
+{
+  "username": "john_doe",
   "password": "securePassword1"
 }

@@ -15,6 +15,9 @@ const urlSchema = z.object({
 export const validateUser = function (object) {
     return userSchema.safeParse(object)
 }
+export const validateUserLogin = function (object) {
+    return userSchema.partial().safeParse(object)
+}
 
 // Función de validación para URLs
 export const validateUrl = function (object) {
