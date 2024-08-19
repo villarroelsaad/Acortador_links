@@ -103,12 +103,11 @@ export class UserController {
     const result = validateUser(req.body)
 
     // Verificar si la validación fue exitosa
-    if (!result) {
+    if (!result || !result.data) {
       return res.status(400).json({ error: 'Invalid request data' })
     }
-
     try {
-      const { password, username } = result.data
+      const { password } = result.data
 
       // Hash de la contraseña de forma asíncrona
       const hashedPassword = await bcrypt.hash(password, 10)
