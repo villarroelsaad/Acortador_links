@@ -5,6 +5,7 @@ import { session } from './config.js'
 import { routerUser } from './routes/rUsers.js'
 
 const app = express()
+const allowedOrigins = ['https://acortador-links-front.vercel.app']
 const corsOptions = {
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
@@ -27,8 +28,6 @@ app.options('*', cors(corsOptions))
 app.disable('x-powered-by')
 app.use(express.json())
 app.use(cookieParser())
-
-const allowedOrigins = ['https://acortador-links-front.vercel.app']
 
 app.use(session)
 

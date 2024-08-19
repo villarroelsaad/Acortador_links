@@ -11,18 +11,18 @@ export class UserController {
     }
 
     static async createUrl(req, res) {
-        // recuperar la url
-        const { url, id } = validateUrl(req.body)
-        if (!url) {
+        // recuperar la u
+        const result = validateUrl(req.body)
+        if (!result) {
             res.status(400).json({ error: 'wrong request' })
         }
-        const shorten = crypto.createHash('md5').update(url).digest('hex').toString()
-        // obtener primeros caracteres
-        const hash = shorten.substring(0, 8)
-        // guardar
-        userModel.createUrl({ hash, url, id })
-        res.status(201).json({ shortUrl: `${req.headers.host}/${hash}` })
-    }
+      const shorten = crypto.createHash('md5').update(result.url).digest('hex').toString()
+      // obtener primeros caracteres
+      const hash = shorten.substring(0, 8)
+      // guardar
+      userModel.createUrl({ hash, url: result.url, id: result.id })
+      res.status(201).json({ shortUrl: `${req.headers.host}/${hash}` })
+  }
 
     static async hash(req, res) {
         // extraer parametro de la direccion
