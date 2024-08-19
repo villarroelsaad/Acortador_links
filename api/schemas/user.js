@@ -4,7 +4,7 @@ const userSchema = z.object({
     username: z.string().min(5),
     email: z.string().min(15),
     password: z.string().min(10),
-    url: z.string().optional().url()
+    url: z.string().url()
 })
 const urlSchema = z.object({
     id: z.number().int(),
