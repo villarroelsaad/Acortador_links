@@ -1,7 +1,7 @@
 import { connection } from '../config.js'
 
 export class userModel {
-    static async createUrl(hash, input) {
+    static async createUrl({ hash, input }) {
         const { url, id } = input
         if (id) {
             await connection.execute('insert into Url (ShortUrl, OldUrl, UserID_Users) values (?,?,?);', [hash, url, id])
@@ -11,18 +11,18 @@ export class userModel {
         return true
     }
 
-    static async hash(hash) {
+    static async hash({ hash }) {
         const [link] = await connection.execute('SELECT OldUrl FROM Url where ShortUrl = ?;', [hash])
         return [link]
     }
 
-    static async login(input) {
+    static async login({ input }) {
         const { username } = input
         const [userRows] = await connection.execute('SELECT UserID, Username, Upassword FROM Users WHERE Username = ?', [username])
         return [userRows]
     }
 
-    static async register(input) {
+    static async register({ input }) {
         const { username, email, hashedPassword } = input
         await connection.execute('insert into Users (Username, Email,Upassword) values (?,?,?);', [username, email, hashedPassword])
         return true
