@@ -21,11 +21,15 @@ const corsOptions = {
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  credentials: true // Permite el uso de cookies
 }
 
 // Aplica CORS a todas las rutas
 app.use(cors(corsOptions))
+
+// Maneja solicitudes preflight
+app.options('*', cors(corsOptions))
+
 app.use(session)
 
 app.use('/', routerUser)
