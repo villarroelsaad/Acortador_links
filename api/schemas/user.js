@@ -4,7 +4,7 @@ import { z } from 'zod'
 const userSchema = z.object({
     username: z.string().min(5, 'Username debe tener minimo 5 caracteres'),
     email: z.string().email('Email invalido'), // Email debe ser válido
-    password: z.string().min(8, 'La contrasena debe tener minimo 8 caracteres')
+    password: z.string().min(7, 'La contrasena debe tener minimo 8 caracteres')
 })
 
 const urlSchema = z.object({

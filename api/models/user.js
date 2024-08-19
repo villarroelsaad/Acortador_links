@@ -73,10 +73,15 @@ export class userModel {
     } catch (error) {
       console.error('Error al registrar el usuario:', error)
 
-      // Manejo de errores: lanzar un error más descriptivo
-      throw new Error('Error al registrar')
+      // Manejo de errores más descriptivo
+      if (error.code === 'ER_DUP_ENTRY') {
+        throw new Error('User with this email or username already exists')
+      } else if (error.code === 'ER_NO_SUCH_TABLE') {
+        throw new Error('The table does not exist in the database')
+      } else {
+        throw new Error(`Database error: ${error.message}`)
+      }
     }
-
     return true // Retornar un valor indicando éxito
   }
 
