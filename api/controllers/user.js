@@ -108,7 +108,7 @@ export class UserController {
     }
 
     try {
-      const { password } = result.data
+      const { password, username } = result.data
 
       // Hash de la contraseña de forma asíncrona
       const hashedPassword = await bcrypt.hash(password, 10)
