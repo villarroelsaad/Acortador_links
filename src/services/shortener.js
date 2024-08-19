@@ -5,6 +5,7 @@ export const ShortenUrl = async (url, id) => {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({ url, id })
     })
 
