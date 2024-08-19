@@ -20,5 +20,5 @@ export const validateUser = function (object) {
 
 // Función de validación para URLs
 export const validateUrl = function (object) {
-    return urlSchema.safeParse(object)
+    return urlSchema.partial.safeParse(object)
 }
