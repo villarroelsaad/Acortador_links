@@ -16,12 +16,12 @@ export class UserController {
         if (!result) {
             res.status(400).json({ error: 'wrong request' })
         }
-      const shorten = crypto.createHash('md5').update(result.data.url).digest('hex').toString()
-      // obtener primeros caracteres
-      const hash = shorten.substring(0, 8)
-      // guardar
-      userModel.createUrl({ hash, input: result.data })
-      res.status(201).json({ shortUrl: `${req.headers.host}/${hash}` })
+        const shorten = crypto.createHash('md5').update(result.data.url).digest('hex').toString()
+        // obtener primeros caracteres
+        const hash = shorten.substring(0, 8)
+        // guardar
+        userModel.createUrl({ hash, input: result.data })
+        res.status(201).json({ shortUrl: `${req.headers.host}/${hash}` })
   }
 
     static async hash(req, res) {
@@ -39,38 +39,38 @@ export class UserController {
     static async login(req, res) {
         const result = validateUser(req.body)
         try {
-        const [userRows] = await userModel.login({ input: result.data.username })
-        if (userRows.length === 0) throw new Error('Username does not exist')
-        const user = userRows[0]
-          const isValid = await bcrypt.compare(result.data.password, user.Upassword)
-          const { Upassword: _, ...authUser } = user
-          if (isValid) {
-              // crear token y guardarlo en las cookies
-              const token = jsonwebtoken.sign({ username: user.Username }, Secret, {
-                  expiresIn: '1h'
-              })
-              res.cookie('access_token', token, {
-                  httpOnly: true
-                  // other cookie settings
-              })
-              res.status(200).json({ authUser })
-          } else {
-              res.status(401).send({ error: 'Invalid password' })
-          }
-      } catch (error) {
-          res.status(401).send({ error: error.message })
-      }
+            const [userRows] = await userModel.login({ input: result.data.username })
+            if (userRows.length === 0) throw new Error('Username does not exist')
+            const user = userRows[0]
+        const isValid = bcrypt.compare(result.data.password, user.Upassword)
+        const { Upassword: _, ...authUser } = user
+        if (isValid) {
+            // crear token y guardarlo en las cookies
+            const token = jsonwebtoken.sign({ username: user.Username }, Secret, {
+                expiresIn: '1h'
+            })
+            res.cookie('access_token', token, {
+                httpOnly: true
+                // other cookie settings
+            })
+            res.status(200).json({ authUser })
+        } else {
+            res.status(401).send({ error: 'Invalid password' })
+        }
+    } catch (error) {
+        res.status(401).send({ error: error.message })
+    }
   }
 
     static async register(req, res) {
         const result = validateUser(req.body)
         try {
-          const hashedPassword = bcrypt.hash(result.data.password, 10)
-          await userModel.register({ input: result.data, hashedPassword })
-          res.send({ message: 'User create successfully' })
-      } catch (error) {
-          res.status(400).send({ error })
-      }
+            const hashedPassword = bcrypt.hash(result.data.password, 10)
+            await userModel.register({ input: result.data, hashedPassword })
+            res.send({ message: 'User create successfully' })
+        } catch (error) {
+            res.status(400).send({ error })
+        }
   }
 
     static async links(req, res) {
