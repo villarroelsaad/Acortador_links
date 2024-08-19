@@ -17,6 +17,6 @@ export const FRegister = async (username, email, password) => {
     return id
   } catch (err) {
     console.error('Fetch error:', err)
-    throw new Error('error')
+    throw new Error(err)
   }
 }
