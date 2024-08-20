@@ -17,6 +17,6 @@ export const FLogin = async (username, password) => {
     return user
   } catch (err) {
     console.error('Fetch error:', err)
-    throw new Error('Failed to shorten URL')
+    throw new Error('Usuario o contraseña incorecto')
   }
 }

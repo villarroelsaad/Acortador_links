@@ -5,6 +5,7 @@ import { UserContext } from '../services/context'
 export const Login = () => {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const [error, SetError] = useState('')
 
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
@@ -19,6 +20,7 @@ export const Login = () => {
       console.log(user.authUser.Username)
       return navigate('/home')
     } catch (err) {
+      SetError(err)
       setUserName('')
       setPassword('')
     }
@@ -37,6 +39,7 @@ export const Login = () => {
             <Link to='../' className='text-slate-100 opacity-85 text-end text-sm hover:text-violet-400'>Inicio</Link>
           </div>
           <button type='submit' className='bg-violet-500 text-slate-50 mt-7 w-28 p-2 self-center text-center rounded-lg font-semibold active:opacity-85 transition-all'>Iniciar sesion</button>
+          {error && <p className='text-center mt-6 font-semibold text-violet-400'>Error: {error}</p>}
         </div>
       </section>
     </form>
