@@ -28,21 +28,21 @@ export const Links = () => {
   }, [id, links])
 
   const handleDelete = (id) => {
-    if (window.confirm('¿Estás seguro de que quieres eliminar este elemento?')) {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este elemento?') === true) {
       Delete(id)
     }
   }
   return (
 
     <section className=''>
-      <h1 className='text-center font-semibold text-5xl mb-20  mt-20 text-gray-100 opacity-90'>Links</h1>
-      <div className='flex flex-wrap gap-10'>{links.map(url => (
+      <h1 className='text-center font-semibold text-5xl mb-20  mt-20 text-slate-100 opacity-90'>Links</h1>
+      <div className='flex flex-wrap w-full gap-10'>{links.map(url => (
         <li className=' list-none ' key={url.id}>
-          <div className=' bg-zinc-950 w-96 text-center rounded-3xl'>
-            <div className='flex flex-col   list-none  p-5 '>
-              <p className='text-slate-100  opacity-85 font-semibold'><span className='text-violet-500'>Url Original:</span><br /> {url.OldUrl}</p>
+          <div className=' bg-zinc-900 w-1/2 border-2 border-zinc-800 text-center rounded-3xl'>
+            <div className='flex flex-col p-5 '>
+              <p className='text-slate-200  opacity-85 font-semibold'><span className='text-violet-500 opacity-90'>Url Original:</span><br /> {url.OldUrl}</p>
               <br />
-              <p className='text-slate-100 opacity-85 font-semibold'><span className='text-violet-500'>Url Acortada:</span><br /> {url.ShortUrl}</p>
+              <p className='text-slate-200 opacity-85 font-semibold'><span className='text-violet-500 opacity-90'>Url Acortada:</span><br /> {url.ShortUrl}</p>
               <button
                 onClick={() => handleDelete(url.id)}
                 className='w-7 flex justify-center self-end rounded-full bg-gray-400 hover:opacity-70'

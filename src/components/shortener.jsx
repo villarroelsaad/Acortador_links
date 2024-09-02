@@ -38,14 +38,13 @@ export const Shortener = () => {
               onChange={e => { setUrl(e.target.value) }} required
               className='h-10 p-3 w-96 text-slate-200 opacity-90 font-semibolda transition-all bg-zinc-900 rounded-s-lg outline-none focus:border-2 border-violet-500' type='text' placeholder='Ingrese la url'
             />
-            <button type='submit' className=' font-semibold p-2 rounded-e-lg bg-violet-500 text-slate-100  text-center  active:opacity-85 transition-all'>Acortar</button>
+            <button type='submit' className=' font-semibold p-2 rounded-e-lg bg-violet-600 text-slate-200 bg-opacity-90  text-center  active:opacity-85 transition-all'>Acortar</button>
           </div>
           <div className='flex justify-center'>
             <div>
               <p className='bg-zinc-900 text-slate-200 opacity-90 mb-8 text-center p-2 h-10 w-96 rounded-lg font-semibold'>
-                {shortenedUrl}
+                {shortenedUrl || error}
               </p>
-              {error && <p className='text-center  font-semibold text-violet-400'>Error: {error}</p>}
             </div>
           </div>
         </div>
