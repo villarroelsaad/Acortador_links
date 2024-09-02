@@ -9,7 +9,7 @@ export const Home = () => {
   const user = useContext(UserContext)
   return (
     <section className='flex w-full flex-wrap'>
-      <p className='text-slate-200 opacity-85 text-base self-end'>Bienvenido {user}</p>
+      <p className='text-slate-200 opacity-85 text-base self-end'>Bienvenido {user.username}</p>
       <div className='w-1/4'>
         <NavBar />
       </div>
