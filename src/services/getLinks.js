@@ -9,7 +9,7 @@ export const GetLinks = async (id) => {
 
     if (!response.ok) {
       const errorData = await response.json()
-      throw new Error(errorData.error || `Error fetching links: ${response.statusText}`)
+      throw new Error(errorData.error || '!Prueba acortar un links')
     }
 
     const links = await response.json()
