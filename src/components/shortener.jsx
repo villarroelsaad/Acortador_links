@@ -29,7 +29,7 @@ export const Shortener = () => {
   return (
 
     <form onSubmit={handleSubmit}>
-      <section className='flex h-96 items-center justify-evenly flex-wrap'>
+      <section className='flex h-96 items-center justify-center flex-wrap'>
         <div className='mt-36'>
           <h1 className='mb-6 opacity-95 text-slate-200 text-5xl p-10 font-bold text-center'>Acortador de Links</h1>
           <div className='flex justify-center flex-wrap mb-6'>
