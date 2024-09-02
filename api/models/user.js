@@ -84,7 +84,7 @@ export class userModel {
         throw new Error(`Database error: ${error.message}`)
       }
     }
-    return true // Retornar un valor indicando éxito
+    return true
   }
 
   static async links({ id }) {
