@@ -3,13 +3,13 @@ export const GetLinks = async (id) => {
     const response = await fetch(`https://acortador-links-api.vercel.app/links/${id}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json' // Opcional
+        'Content-Type': 'application/json'
       }
     })
 
     if (!response.ok) {
       const errorData = await response.json()
-      throw new Error(errorData.error || '!Prueba acortar un links')
+      throw new Error(errorData.error || '!Prueba a utilizar el Acortador')
     }
 
     const links = await response.json()
