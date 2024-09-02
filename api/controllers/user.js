@@ -15,7 +15,7 @@ export class UserController {
       // Validar la URL recibida
       const result = validateUrl(req.body)
       if (!result) {
-        return res.status(400).json({ error: 'Invalid request' })
+        return res.status(400).json({ error: result })
       }
 
       // Crear un hash único para la URL
@@ -59,7 +59,7 @@ export class UserController {
   static async login(req, res) {
     const result = validateUserLogin(req.body)
     if (!result) {
-      return res.status(400).json({ error: 'Invalid request data' })
+      return res.status(400).json({ error: result })
     }
 
     try {
@@ -102,7 +102,7 @@ export class UserController {
 
     // Verificar si la validación fue exitosa
     if (!result || !result.data) {
-      return res.status(400).json({ error: 'Invalid request data' })
+      return res.status(400).json({ error: result.error })
     }
     try {
       const { password } = result.data
