@@ -23,7 +23,7 @@ export const NavBar = () => {
   }
   return (
 
-    <section className='fixed left-0 top-0 bottom-0 z-50 flex justify-between border-l-2 border-zinc-800  bg-zinc-950 text-slate-200'>
+    <section className='fixed left-0 top-0 bottom-0 z-50 flex justify-between border-r-2 border-zinc-800  bg-zinc-950 text-slate-200'>
       <button onClick={toggleMenu} className='absolute w-10 top-4 left-5'>
         <img src={` ${isOpen ? '/close.svg' : '/menu.svg'}`} className='w-8 h-8 ' alt='menu' />
       </button>
