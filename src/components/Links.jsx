@@ -28,10 +28,7 @@ export const Links = () => {
   }, [id, links])
 
   const handleDelete = (id) => {
-    const result = window.confirm('¿Estás seguro de que quieres eliminar este elemento?')
-    if (result === true) {
-      Delete(id)
-    }
+    Delete(id)
   }
   return (
 
