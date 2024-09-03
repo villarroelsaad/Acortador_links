@@ -1,7 +1,7 @@
 
 
 ###recuperar links
-GET   http://localhost:1234/links/3
+delete  http://localhost:1234/delete/7
 ###
 
 POST  http://localhost:1234/register
