@@ -143,7 +143,7 @@ export class UserController {
     const { id } = req.params
 
     try {
-      await userModel.delete(id)
+      await userModel.delete({ id })
       res.status(204).json({ message: 'Enlace eliminado correctamente' })
     } catch (error) {
       console.error(error)

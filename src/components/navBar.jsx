@@ -15,7 +15,7 @@ export const NavBar = () => {
     if (window.confirm('¿Estás seguro de que quieres cerrar sesión?')) {
       try {
         await LogOut()
-        navigate('/login')
+        navigate('/')
       } catch (error) {
         console.error('Error al cerrar sesión:', error)
       }
