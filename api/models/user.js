@@ -75,7 +75,6 @@ export class userModel {
     } catch (error) {
       console.error('Error al registrar el usuario:', error)
 
-      // Manejo de errores más descriptivo
       if (error.code === 'ER_DUP_ENTRY') {
         throw new Error('User with this email or username already exists')
       } else if (error.code === 'ER_NO_SUCH_TABLE') {
@@ -88,8 +87,10 @@ export class userModel {
   }
 
   static async links({ id }) {
-    const [links] = await connection.execute('SELECT id, OldUrl, ShortUrl FROM Url where UserID_Users = ?;', [id])
-    return links
+    const [links] = await connection.execute('SELECT id, OldUrl, ShortUrl FROM Url where UserID_Users = ?;',
+      [id]
+    )
+    return [links]
   }
 
   static async delete({ id }) {
