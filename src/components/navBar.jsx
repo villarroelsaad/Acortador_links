@@ -12,7 +12,8 @@ export const NavBar = () => {
   }
 
   const handleLogout = async () => {
-    if (window.confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+    const result = window.confirm('¿Estás seguro de que quieres cerrar sesión?')
+    if (result === true) {
       try {
         await LogOut()
         navigate('/')
