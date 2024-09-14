@@ -1,8 +1,13 @@
-# React + Vite
+# Acortador de links
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+![App](public/1.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Para usar en la carpeta acortador de links ejecutar en la terminal:
+**npm install** and **npm run dev**
+
+Luego ir a la direccion de la carpeta api y ejecutar en la terminal node index.js:
+**node index.js**
+
+![App](public/2.png)
