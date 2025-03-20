@@ -38,7 +38,7 @@ export const Login = () => {
             <Link to='../register' className='text-slate-200 opacity-75  text-sm hover:text-violet-400'>Registrarse</Link>
             <Link to='../' className='text-slate-200 opacity-75 text-end text-sm hover:text-violet-400'>Inicio</Link>
           </div>
-          <button type='submit' className='bg-violet-500 bg-opacity-90 text-slate-200 mt-7 w-28 p-2 self-center text-center rounded-lg font-semibold active:opacity-85 transition-all'>Iniciar sesion</button>
+          <button type='submit' className='bg-violet-500 bg-opacity-90 text-slate-200 mt-7 w-28 p-2 self-center text-center rounded-lg font-semibold active:opacity-85  hover:bg-violet-400 transition-all'>Iniciar sesion</button>
           {error && <p className='text-center mt-6 font-semibold text-violet-400'>Error: {error}</p>}
         </div>
       </section>

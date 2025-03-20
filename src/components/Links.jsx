@@ -38,7 +38,7 @@ export const Links = () => {
       <h1 className='text-center font-semibold text-5xl mb-20  mt-20 text-slate-100 opacity-90'>Links</h1>
       <div className='flex flex-wrap justify-center w-full gap-10'>{links.map(url => (
         <li className=' list-none ' key={url.id}>
-          <div className=' bg-zinc-900 w-auto border-2 border-zinc-800 text-center rounded-3xl'>
+          <div className=' bg-zinc-900 w-auto border-2 border-zinc-800 text-center rounded-3xl hover:border-violet-400 transition-all'>
             <div className='flex flex-col p-5 '>
               <p className='text-slate-200  opacity-85 font-semibold'><span className='text-violet-500 opacity-90'>Url Original:</span><br /> {url.OldUrl}</p>
               <br />

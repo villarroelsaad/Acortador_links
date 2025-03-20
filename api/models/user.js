@@ -1,7 +1,7 @@
 import { connection } from '../config.js'
 
 export class userModel {
-  static async createUrl({ hash, input }) {
+  static async createUrl ({ hash, input }) {
     const { url, id } = input
 
     // Validar parámetros para evitar posibles inyecciones o errores
@@ -25,12 +25,12 @@ export class userModel {
     return true
   }
 
-  static async hash({ hash }) {
+  static async hash ({ hash }) {
     const [link] = await connection.execute('SELECT OldUrl FROM Url where ShortUrl = ?;', [hash])
     return link
   }
 
-  static async login({ input }) {
+  static async login ({ input }) {
     const username = input
     // Validar el input para evitar problemas
     if (!username) {
@@ -55,7 +55,7 @@ export class userModel {
     }
   }
 
-  static async register({ input }) {
+  static async register ({ input }) {
     const { username, email, password } = input
 
     // Validar el input para evitar problemas
@@ -86,14 +86,14 @@ export class userModel {
     return true
   }
 
-  static async links({ id }) {
+  static async links ({ id }) {
     const [links] = await connection.execute('SELECT id, OldUrl, ShortUrl FROM Url where UserID_Users = ?;',
       [id]
     )
     return [links]
   }
 
-  static async delete({ id }) {
+  static async delete ({ id }) {
     await connection.execute('DELETE FROM Url WHERE id = ?;', [id])
     return true
   }

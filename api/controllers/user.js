@@ -5,12 +5,12 @@ import bcrypt from 'bcrypt'
 import { userModel } from '../models/user.js'
 import { validateUser, validateUrl, validateUserLogin } from '../schemas/user.js'
 export class UserController {
-  static async home(req, res) {
+  static async home (req, res) {
     // recuperar la url
     res.json({ message: 'Hola' })
   }
 
-  static async createUrl(req, res) {
+  static async createUrl (req, res) {
     try {
       // Validar la URL recibida
       const result = validateUrl(req.body)
@@ -33,7 +33,7 @@ export class UserController {
     }
   }
 
-  static async hash(req, res) {
+  static async hash (req, res) {
   // extraer parametro de la direccion
     try {
     // Extraer el parámetro de la dirección
@@ -56,7 +56,7 @@ export class UserController {
     }
   }
 
-  static async login(req, res) {
+  static async login (req, res) {
     const result = validateUserLogin(req.body)
     if (!result) {
       return res.status(400).json({ error: result })
@@ -97,7 +97,7 @@ export class UserController {
     }
   }
 
-  static async register(req, res) {
+  static async register (req, res) {
     const result = validateUser(req.body)
 
     // Verificar si la validación fue exitosa
@@ -123,7 +123,7 @@ export class UserController {
     }
   }
 
-  static async links(req, res) {
+  static async links (req, res) {
     const { id } = req.params
 
     try {
@@ -139,7 +139,7 @@ export class UserController {
     }
   }
 
-  static async delete(req, res) {
+  static async delete (req, res) {
     const { id } = req.params
 
     try {
@@ -151,7 +151,7 @@ export class UserController {
     }
   }
 
-  static async logOut(req, res) {
+  static async logOut (req, res) {
     res
       .clearCookie('access_token')
       .json({ message: 'logout successful' })

@@ -1,9 +1,9 @@
 import { z } from 'zod'
 
 const userSchema = z.object({
-    username: z.string().min(5, 'Username debe tener minimo 5 caracteres'),
+    username: z.string().min(3, 'Username debe tener minimo 3 caracteres'),
     email: z.string().email('Email invalido'),
-    password: z.string().min(7, 'La contrasena debe tener minimo 8 caracteres')
+    password: z.string().min(5, 'La contrasena debe tener minimo 5 caracteres')
 })
 
 const urlSchema = z.object({

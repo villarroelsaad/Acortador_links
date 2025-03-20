@@ -18,11 +18,11 @@ export const Register = () => {
         SetError(register)
         setPassword('')
         setEmail('')
-        console.log(register)
+        alert('Usuario registrado correctamente')
         return navigate('/login')
       }
     } catch (err) {
-      SetError(err.message)
+      console.log(err.message)
       setUserName('')
       setPassword('')
       setEmail('')
